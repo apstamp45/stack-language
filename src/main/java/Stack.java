@@ -1,4 +1,5 @@
 import java.util.LinkedList;
+import java.util.NoSuchElementException;
 
 /**
  * Handles the memory stack for the program.
@@ -8,35 +9,196 @@ public class Stack {
     /**
      * Stores the memory stack.
      */
-    private static LinkedList<Integer> stack = new LinkedList<>();
+    private static final LinkedList<Integer> stack = new LinkedList<>();
+
+    /**
+     * Pops the first element of the list, and returns the
+     * value, or 0 if no element exists.
+     * @return The pop value, or 0.
+     */
+    public static int pop() {
+        try {
+            return stack.pop();
+        } catch (NoSuchElementException e) {
+            return 0;
+        }
+    }
+
+    /**
+     * Returns the value of the top stack value, or,
+     * if no elements exist, 0.
+     * @return The peek value, or 0.
+     */
+    public static int peek() {
+        return stack.peek() == null ? 0 : stack.peek();
+    }
+
+    /**
+     * Returns the value stored at the specified index,
+     * or 0 if none exists.
+     * @param index The index.
+     * @return The index value, or 0.
+     */
+    public static int get(int index) {
+        try {
+            return stack.get(index);
+        } catch (IndexOutOfBoundsException e) {
+            return 0;
+        }
+    }
+
+    /**
+     * Returns the stack's size.
+     * @return The stack's size.
+     */
+    public static int size() {
+        return stack.size();
+    }
+
+    /**
+     * Adds the stack's size to the stack.
+     */
+    public static void pushSize() {
+        stack.push(size());
+    }
+
+    /**
+     * Prints the char value of the first stack item.
+     */
+    public static void printChar() {
+        int value = peek();
+        if (value < 0 || value > 127) {
+            value = 0;
+        }
+        System.out.print((char) value);
+    }
 
     /**
      * Adds a value to the top of the stack.
      * @param value The value to add.
      */
     public static void push(int value) {
-        stack.addFirst(value);
+        stack.push(value);
     }
 
     /**
      * Removes the first element of the stack.
      */
     public static void delete() {
-        stack.removeFirst();
+        try {
+            stack.remove();
+        } catch (NoSuchElementException ignored) {}
     }
 
     /**
      * Clones the first element of the stack.
      */
     public static void copy() {
-        stack.addFirst(stack.peek());
+        stack.push(peek());
     }
 
     /**
      * Adds the first two values of the stack and
      * appends the sum to the stack.
      */
-    public void addAndAppend() {
+    public static void addAndAppend() {
+        stack.push(peek() + get(1));
+    }
 
+    /**
+     * Pops last 2 stack items and appends the sum of them.
+     */
+    public static void add() {
+        stack.push(pop() + pop());
+    }
+
+    /**
+     * Adds the value of the second stack item minus the
+     * first to the stack.
+     */
+    public static void subtractAndAppend() {
+        stack.push(get(1) - peek());
+    }
+
+    /**
+     * Pops the last two values and adds the difference of
+     * the second value minus the first to the stack.
+     */
+    public static void subtract() {
+        int value = pop();
+        stack.push(pop() - value);
+    }
+
+    /**
+     * Pushes the product of the first 2 stack values to
+     * the stack.
+     */
+    public static void multiplyAndAppend() {
+        stack.push(get(1) * peek());
+    }
+
+    /**
+     * Pops the first 2 stack values, and adds their
+     * product to the stack.
+     */
+    public static void multiply() {
+        stack.push(pop() * pop());
+    }
+
+    /**
+     * Adds the quotient of the second value divided by
+     * the first value to the stack.
+     */
+    public static void divideAndAppend() {
+        stack.push(get(1) / peek());
+    }
+
+    /**
+     * Pops the top 2 values and adds the quotient of
+     * the second divided by the first to the stack.
+     */
+    public static void divide() {
+        int value = pop();
+        stack.push(pop() / value);
+    }
+
+    /**
+     * Shifts the stack left by one (moves the last element
+     * to the top of the stack).
+     */
+    public static void shiftLeft() {
+        if (size() < 1) return;
+        stack.push(stack.pollLast());
+    }
+
+    /**
+     * Shifts the stack left x times, where x is the fist element
+     * of the stack (which is also removed).
+     */
+    public static void shiftLeftX() {
+        int times = pop();
+        for (int i = 0; i < times;i++) {
+            shiftLeft();
+        }
+    }
+
+    /**
+     * Shifts the stack right by one (moves the first element
+     * to the bottom of the stack).
+     */
+    public static void shiftRight() {
+        if (size() < 1) return;
+        stack.add(stack.pop());
+    }
+
+    /**
+     * Shifts the stack right x times, where x is the first element
+     * of the stack (which is also removed).
+     */
+    public static void shiftRightX() {
+        int times = pop();
+        for (int i = 0; i < times; i++) {
+            shiftRight();
+        }
     }
 }
