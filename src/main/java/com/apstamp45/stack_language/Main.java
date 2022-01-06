@@ -1,3 +1,5 @@
+package com.apstamp45.stack_language;
+
 public class Main {
     public static void main(String[] args) {
         // 5,6,7,2<<48p
