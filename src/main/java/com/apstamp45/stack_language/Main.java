@@ -1,15 +1,14 @@
 package com.apstamp45.stack_language;
 
+import com.apstamp45.stack_language.program.Add;
+import com.apstamp45.stack_language.program.PrintChar;
+import com.apstamp45.stack_language.program.Program;
+import com.apstamp45.stack_language.program.Push;
+
 public class Main {
     public static void main(String[] args) {
-        // 5,6,7,2<<48p
-        Stack.push(5);
-        Stack.push(6);
-        Stack.push(7);
-        Stack.push(2);
-        Stack.shiftLeftX();
-        Stack.push(48);
-        Stack.add();
-        Stack.printChar();
+        // 50pn40p
+        Program.addActions(new Push(50), new PrintChar(), new Push(-40), new Add(), new PrintChar());
+        Program.runProgram();
     }
 }

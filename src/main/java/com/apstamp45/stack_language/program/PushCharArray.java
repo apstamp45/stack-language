@@ -2,7 +2,7 @@ package com.apstamp45.stack_language.program;
 
 import com.apstamp45.stack_language.Stack;
 
-public class StringValue implements Action {
+public class PushCharArray extends NoJumpAction {
 
     /**
      * Stores the character values.
@@ -13,7 +13,7 @@ public class StringValue implements Action {
      * Crates a StringValue with the specified characters.
      * @param values The character values.
      */
-    public StringValue(char[] values) {
+    public PushCharArray(char[] values) {
         this.values = values;
     }
 
@@ -21,7 +21,7 @@ public class StringValue implements Action {
      * Adds the characters' int values to the stack.
      */
     @Override
-    public void run() {
+    public void doAction() {
         for (char value : values) {
             Stack.push(value);
         }

@@ -49,4 +49,22 @@ public class Program {
         if (actions == null) return;
         program.addAll(Arrays.asList(actions));
     }
+
+    /**
+     * Runs the Action at index currentAction.
+     */
+    public static void runCurrentAction() {
+        program.get(currentAction).run();
+        currentAction = nextAction;
+    }
+
+    /**
+     * Runs program.get(currentAction) until currentAction
+     * is out of bounds of program.
+     */
+    public static void runProgram() {
+        while (currentAction < program.size()) {
+            runCurrentAction();
+        }
+    }
 }

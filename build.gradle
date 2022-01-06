@@ -2,7 +2,7 @@ plugins {
     id 'java'
 }
 
-group 'com.apstamp45'
+group 'com.apstamp45.stack_language'
 version '0.1-SNAPSHOT'
 
 repositories {
