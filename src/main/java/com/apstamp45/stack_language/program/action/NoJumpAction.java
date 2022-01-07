@@ -1,4 +1,7 @@
-package com.apstamp45.stack_language.program;
+package com.apstamp45.stack_language.program.action;
+
+import com.apstamp45.stack_language.program.Program;
+import com.apstamp45.stack_language.program.action.Action;
 
 /**
  * An Action that does not jump to a different
@@ -14,5 +17,8 @@ public abstract class NoJumpAction implements Action {
         Program.setNextAction(Program.getCurrentAction() + 1);
     }
 
+    /**
+     * Runs before incrementing Program.nextAction.
+     */
     public abstract void doAction();
 }

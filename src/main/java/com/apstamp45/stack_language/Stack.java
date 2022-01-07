@@ -203,4 +203,16 @@ public class Stack {
             shiftRight();
         }
     }
+
+    /**
+     * Pops the first value, and inserts it at x,
+     * where x is the first value of the stack (which will
+     * be deleted).
+     */
+    public static void insert() {
+        int index = pop();
+        int size = stack.size();
+        if (index >= size) index = size - 1;
+        stack.add(index, pop());
+    }
 }

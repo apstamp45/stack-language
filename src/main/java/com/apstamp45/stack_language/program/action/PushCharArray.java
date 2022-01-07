@@ -1,6 +1,7 @@
-package com.apstamp45.stack_language.program;
+package com.apstamp45.stack_language.program.action;
 
 import com.apstamp45.stack_language.Stack;
+import com.apstamp45.stack_language.program.Program;
 
 public class PushCharArray extends NoJumpAction {
 

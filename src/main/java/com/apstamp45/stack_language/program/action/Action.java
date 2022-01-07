@@ -1,4 +1,4 @@
-package com.apstamp45.stack_language.program;
+package com.apstamp45.stack_language.program.action;
 
 /**
  * Defines a program action. Actions can include things
