@@ -1,6 +1,7 @@
 package com.apstamp45.stack_language.program;
 
 import com.apstamp45.stack_language.program.action.Action;
+import com.apstamp45.stack_language.program.action.JumpDestination;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -14,6 +15,11 @@ public class Program {
      * Stores the com.apstamp45.stack_language.program's actions.
      */
     private static final ArrayList<Action> program = new ArrayList<>();
+
+    /**
+     * Stores JumpDestination/s for late use.
+     */
+    private static final ArrayList<JumpDestination> jumpDestinations = new ArrayList<>();
 
     /**
      * Stores the index of the current action being
@@ -36,6 +42,27 @@ public class Program {
     }
 
     /**
+     * Returns the program's current size.
+     * @return The program's current size.
+     */
+    public static int getProgramSize() {
+        return program.size();
+    }
+
+    /**
+     * Returns a jump destination for a given jump label.
+     * @param destination The destination label.
+     * @return The address of the given label.
+     */
+    public static int getDestinationAddress(String destination) {
+        for (JumpDestination jumpDestination: jumpDestinations) {
+            if (destination.equals(jumpDestination.label())) {
+                return jumpDestination.destination();
+            }
+        }
+        return -1;
+    }
+    /**
      * Sets the index of the next action to be executed.
      * @param nextAction The next action's index.
      */
@@ -49,7 +76,10 @@ public class Program {
      */
     public static void addActions(Action... actions) {
         if (actions == null) return;
-        program.addAll(Arrays.asList(actions));
+        for (Action action: actions) {
+            action.onCreate();
+            program.add(action);
+        }
     }
 
     /**

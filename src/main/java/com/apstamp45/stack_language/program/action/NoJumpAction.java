@@ -7,7 +7,7 @@ import com.apstamp45.stack_language.program.action.Action;
  * An Action that does not jump to a different
  * place in the program.
  */
-public abstract class NoJumpAction implements Action {
+public abstract class NoJumpAction extends Action {
 
     /**
      * Runs doAction(), then increments Program.nextAction.
