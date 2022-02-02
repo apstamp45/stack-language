@@ -38,15 +38,23 @@ public class Jump extends Action {
     public Jump(int condition, String destination) {
         this.condition = condition;
         if (condition > 6 || condition < -6) {
-            System.out.println("Error: Jump with condition code " + condition + ", which is invalid.");
+            System.err.println("Jump created with invalid condition code: " + condition + ".");
             System.exit(1);
         }
         this.destination = destination;
     }
+
+    /**
+     * Jumps to destination if condition is met.
+     */
     @Override
     public void run() {
-        if (testCondition()) {
+        boolean toJump = testCondition();
+        if (condition < 0) toJump = !toJump;
+        if (toJump) {
             Program.setNextAction(Program.getDestinationAddress(destination));
+        } else {
+            Program.setNextAction(Program.getCurrentAction() + 1);
         }
     }
 
@@ -57,6 +65,7 @@ public class Jump extends Action {
     private boolean testCondition() {
         int a = Stack.get(1);
         int b = Stack.peek();
+        int condition = this.condition < 0 ? this.condition * -1 : this.condition;
         return switch (condition) {
             case 0 -> true;
             case 1 -> a == b;

@@ -31,7 +31,9 @@ public class JumpDestination extends NoJumpAction {
 
     @Override
     public void onCreate() {
+        System.out.println("JumpDestination.onCreate()");
         destination = Program.getProgramSize();
+        Program.addJumpDestination(this);
     }
 
     /**

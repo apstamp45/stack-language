@@ -8,20 +8,20 @@ import com.apstamp45.stack_language.program.action.math.Subtract;
 
 public class Main {
     public static void main(String[] args) {
-        // 1,0_a#1++48+;p#10j>a
+        // 0,0j=a78;p#jb_a69;p_b
         Program.addActions(
-                new Push(1),
-                new Push(0),
-                new JumpDestination("a"),
-                new Delete(false),
-                new Push(1),
-                new Add(false),
-                new Push(48),
-                new Add(true),
+                new Push(2),
+                new Push(2),
+                new Jump(-1, "a"),
+                new Push(78),
                 new PrintChar(),
                 new Delete(false),
-                new Push(10),
-                new Jump(2, "a"));
+                new Jump(0, "b"),
+                new JumpDestination("a"),
+                new Push(69),
+                new PrintChar(),
+                new JumpDestination("b")
+        );
         Program.runProgram();
     }
 }

@@ -50,6 +50,13 @@ public class Program {
     }
 
     /**
+     * Adds a JumpDestination to the program.
+     * @param jumpDestination The JumpDestination.
+     */
+    public static void addJumpDestination(JumpDestination jumpDestination) {
+        jumpDestinations.add(jumpDestination);
+    }
+    /**
      * Returns a jump destination for a given jump label.
      * @param destination The destination label.
      * @return The address of the given label.
@@ -60,6 +67,8 @@ public class Program {
                 return jumpDestination.destination();
             }
         }
+        System.err.println("Destination of label \"" + destination + "\" does not exist.");
+        System.exit(1);
         return -1;
     }
     /**
