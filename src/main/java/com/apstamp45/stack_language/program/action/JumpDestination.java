@@ -44,6 +44,9 @@ public class JumpDestination extends NoJumpAction {
         return destination;
     }
 
+    /**
+     * This NoJumpAction doesn't actually do anything when run.
+     */
     @Override
     public void doAction() {}
 }

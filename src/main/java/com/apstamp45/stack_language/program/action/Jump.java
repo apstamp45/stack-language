@@ -5,7 +5,7 @@ import com.apstamp45.stack_language.program.Program;
 
 /**
  * Jumps to a given destination in the program if
- * conditions are met.
+ * the condition is met.
  */
 public class Jump extends Action {
 
@@ -73,7 +73,7 @@ public class Jump extends Action {
             case 3 -> a >= b;
             case 4 -> a < b;
             case 5 -> a <= b;
-            case 6 -> Stack.size() == 0;
+            case 6 -> Stack.size() < 1;
             default -> false;
         };
     }
