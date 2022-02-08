@@ -95,7 +95,7 @@ public class Stack {
     /**
      * Clones the first element of the stack.
      */
-    public static void copy() {
+    public static void duplicate() {
         stack.push(peek());
     }
 

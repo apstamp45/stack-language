@@ -2,17 +2,19 @@ package com.apstamp45.stack_language.program.action;
 
 import com.apstamp45.stack_language.Stack;
 
+/**
+ * Deletes the top value, or, if doubleAction == true,
+ * POPs the top value and deletes that many MORE values.
+ */
 public class Delete extends NoJumpAction {
 
     /**
-     * If this Delete is a double action, it will
-     * pop the last value off the stack, and delete
-     * that many values from the stack.
+     * Whether this is a double action.
      */
     public final boolean doubleAction;
 
     /**
-     * Creates a Delete with the given doubleAction value.
+     * Creates a Delete.
      * @param doubleAction Whether this is a double action.
      */
     public Delete(boolean doubleAction) {
@@ -22,7 +24,8 @@ public class Delete extends NoJumpAction {
     @Override
     public void doAction() {
         if (doubleAction) {
-            for (int i = Stack.pop(); i > 1; i--) {
+            int times = Stack.pop();
+            for (int i = 0; i < times; i++) {
                 Stack.delete();
             }
         } else {
