@@ -1,7 +1,5 @@
 package com.apstamp45.stack_language.program.action;
 
-import com.apstamp45.stack_language.program.Program;
-
 /**
  * This Action just reserves an index to which to jump.
  */
@@ -31,9 +29,8 @@ public class JumpDestination extends NoJumpAction {
 
     @Override
     public void onCreate() {
-        System.out.println("JumpDestination.onCreate()");
-        destination = Program.getProgramSize();
-        Program.addJumpDestination(this);
+        destination = process.getProgramSize();
+        process.addJumpDestination(this);
     }
 
     /**

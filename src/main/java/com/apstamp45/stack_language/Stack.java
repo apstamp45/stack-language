@@ -11,14 +11,14 @@ public class Stack {
     /**
      * Stores the memory stack.
      */
-    private static final LinkedList<Integer> stack = new LinkedList<>();
+    private final LinkedList<Integer> stack = new LinkedList<>();
 
     /**
      * Pops the first element of the list, and returns the
      * value, or 0 if no element exists.
      * @return The pop value, or 0.
      */
-    public static int pop() {
+    public int pop() {
         try {
             return stack.pop();
         } catch (NoSuchElementException e) {
@@ -31,7 +31,7 @@ public class Stack {
      * if no elements exist, 0.
      * @return The peek value, or 0.
      */
-    public static int peek() {
+    public int peek() {
         return stack.peek() == null ? 0 : stack.peek();
     }
 
@@ -41,7 +41,7 @@ public class Stack {
      * @param index The index.
      * @return The index value, or 0.
      */
-    public static int get(int index) {
+    public int get(int index) {
         try {
             return stack.get(index);
         } catch (IndexOutOfBoundsException e) {
@@ -53,21 +53,21 @@ public class Stack {
      * Returns the stack's size.
      * @return The stack's size.
      */
-    public static int size() {
+    public int size() {
         return stack.size();
     }
 
     /**
      * Adds the stack's size to the stack.
      */
-    public static void pushSize() {
+    public void pushSize() {
         stack.push(size());
     }
 
     /**
      * Prints the char value of the first stack item.
      */
-    public static void printChar() {
+    public void printChar() {
         int value = peek();
         if (value < 0 || value > 127) {
             value = 0;
@@ -79,14 +79,14 @@ public class Stack {
      * Adds a value to the top of the stack.
      * @param value The value to add.
      */
-    public static void push(int value) {
+    public void push(int value) {
         stack.push(value);
     }
 
     /**
      * Removes the first element of the stack.
      */
-    public static void delete() {
+    public void delete() {
         try {
             stack.remove();
         } catch (NoSuchElementException ignored) {}
@@ -95,7 +95,7 @@ public class Stack {
     /**
      * Clones the first element of the stack.
      */
-    public static void duplicate() {
+    public void duplicate() {
         stack.push(peek());
     }
 
@@ -103,14 +103,14 @@ public class Stack {
      * Adds the first two values of the stack and
      * appends the sum to the stack.
      */
-    public static void addAndAppend() {
+    public void addAndAppend() {
         stack.push(peek() + get(1));
     }
 
     /**
      * Pops last 2 stack items and appends the sum of them.
      */
-    public static void add() {
+    public void add() {
         stack.push(pop() + pop());
     }
 
@@ -118,7 +118,7 @@ public class Stack {
      * Adds the value of the second stack item minus the
      * first to the stack.
      */
-    public static void subtractAndAppend() {
+    public void subtractAndAppend() {
         stack.push(get(1) - peek());
     }
 
@@ -126,7 +126,7 @@ public class Stack {
      * Pops the last two values and adds the difference of
      * the second value minus the first to the stack.
      */
-    public static void subtract() {
+    public void subtract() {
         int value = pop();
         stack.push(pop() - value);
     }
@@ -135,7 +135,7 @@ public class Stack {
      * Pushes the product of the first 2 stack values to
      * the stack.
      */
-    public static void multiplyAndAppend() {
+    public void multiplyAndAppend() {
         stack.push(get(1) * peek());
     }
 
@@ -143,7 +143,7 @@ public class Stack {
      * Pops the first 2 stack values, and adds their
      * product to the stack.
      */
-    public static void multiply() {
+    public void multiply() {
         stack.push(pop() * pop());
     }
 
@@ -151,7 +151,7 @@ public class Stack {
      * Adds the quotient of the second value divided by
      * the first value to the stack.
      */
-    public static void divideAndAppend() {
+    public void divideAndAppend() {
         stack.push(get(1) / peek());
     }
 
@@ -159,7 +159,7 @@ public class Stack {
      * Pops the top 2 values and adds the quotient of
      * the second divided by the first to the stack.
      */
-    public static void divide() {
+    public void divide() {
         int value = pop();
         stack.push(pop() / value);
     }
@@ -168,7 +168,7 @@ public class Stack {
      * Shifts the stack left by one (moves the last element
      * to the top of the stack).
      */
-    public static void shiftLeft() {
+    public void shiftLeft() {
         if (size() < 1) return;
         stack.push(stack.pollLast());
     }
@@ -177,7 +177,7 @@ public class Stack {
      * Shifts the stack left x times, where x is the fist element
      * of the stack (which is also removed).
      */
-    public static void shiftLeftX() {
+    public void shiftLeftX() {
         int times = pop();
         for (int i = 0; i < times;i++) {
             shiftLeft();
@@ -188,7 +188,7 @@ public class Stack {
      * Shifts the stack right by one (moves the first element
      * to the bottom of the stack).
      */
-    public static void shiftRight() {
+    public void shiftRight() {
         if (size() < 1) return;
         stack.add(stack.pop());
     }
@@ -197,7 +197,7 @@ public class Stack {
      * Shifts the stack right x times, where x is the first element
      * of the stack (which is also removed).
      */
-    public static void shiftRightX() {
+    public void shiftRightX() {
         int times = pop();
         for (int i = 0; i < times; i++) {
             shiftRight();
@@ -209,7 +209,7 @@ public class Stack {
      * where x is the first value of the stack (which will
      * be deleted).
      */
-    public static void insert() {
+    public void insert() {
         int index = pop();
         int size = stack.size();
         if (index >= size) index = size - 1;

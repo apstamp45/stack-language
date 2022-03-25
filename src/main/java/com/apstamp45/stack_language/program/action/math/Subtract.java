@@ -1,6 +1,5 @@
 package com.apstamp45.stack_language.program.action.math;
 
-import com.apstamp45.stack_language.Stack;
 import com.apstamp45.stack_language.program.action.NoJumpAction;
 
 /**
@@ -30,9 +29,9 @@ public class Subtract extends NoJumpAction {
     @Override
     public void doAction() {
         if (append) {
-            Stack.subtractAndAppend();
+            process.getStack().subtractAndAppend();
         } else {
-            Stack.subtract();
+            process.getStack().subtract();
         }
     }
 }

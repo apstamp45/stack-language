@@ -1,7 +1,7 @@
 package com.apstamp45.stack_language.program.action;
 
 import com.apstamp45.stack_language.Stack;
-import com.apstamp45.stack_language.program.Program;
+import com.apstamp45.stack_language.program.StackProcess;
 
 /**
  * Jumps to a given destination in the program if
@@ -52,9 +52,9 @@ public class Jump extends Action {
         boolean toJump = testCondition();
         if (condition < 0) toJump = !toJump;
         if (toJump) {
-            Program.setNextAction(Program.getDestinationAddress(destination));
+            StackProcess.setNextAction(StackProcess.getDestinationAddress(destination));
         } else {
-            Program.setNextAction(Program.getCurrentAction() + 1);
+            StackProcess.setNextAction(StackProcess.getCurrentAction() + 1);
         }
     }
 

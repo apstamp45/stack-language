@@ -1,6 +1,7 @@
-package com.apstamp45.stack_language.program.action;
+package com.apstamp45.stack_language.program.action.push;
 
 import com.apstamp45.stack_language.Stack;
+import com.apstamp45.stack_language.program.action.NoJumpAction;
 
 /**
  * Calculates the size of the stack, and

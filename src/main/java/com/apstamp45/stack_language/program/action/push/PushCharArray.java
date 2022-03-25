@@ -1,14 +1,14 @@
-package com.apstamp45.stack_language.program.action;
+package com.apstamp45.stack_language.program.action.push;
 
 import com.apstamp45.stack_language.Stack;
-import com.apstamp45.stack_language.program.Program;
+import com.apstamp45.stack_language.program.action.NoJumpAction;
 
 public class PushCharArray extends NoJumpAction {
 
     /**
      * Stores the character values.
      */
-    private char[] values;
+    private final char[] values;
 
     /**
      * Crates a StringValue with the specified characters.
@@ -26,6 +26,5 @@ public class PushCharArray extends NoJumpAction {
         for (char value : values) {
             Stack.push(value);
         }
-        Program.setNextAction(Program.getCurrentAction() + 1);
     }
 }

@@ -1,111 +1,47 @@
 package com.apstamp45.stack_language.program;
 
-import com.apstamp45.stack_language.program.action.Action;
-import com.apstamp45.stack_language.program.action.JumpDestination;
+import com.apstamp45.stack_language.Stack;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 /**
- * Stores the stack com.apstamp45.stack_language.program.
+ * This class stores and is capable of running all
+ * the StackProcesses.
  */
 public class Program {
 
     /**
-     * Stores the com.apstamp45.stack_language.program's actions.
+     * Stores all the StackProcess/es.
      */
-    private static final ArrayList<Action> program = new ArrayList<>();
+    private static final ArrayList<StackProcess> processes = new ArrayList<>();
 
     /**
-     * Stores JumpDestination/s for late use.
+     * Adds a StackProcess to the list.
+     * @param process The StackProcess to add.
      */
-    private static final ArrayList<JumpDestination> jumpDestinations = new ArrayList<>();
-
-    /**
-     * Stores the index of the current action being
-     * executed.
-     */
-    private static int currentAction = 0;
-
-    /**
-     * Stores the index of the next action to be
-     * executed.
-     */
-    private static int nextAction;
-
-    /**
-     * Returns the current action index.
-     * @return The current action index.
-     */
-    public static int getCurrentAction() {
-        return currentAction;
+    public static void addStackProcess(StackProcess process) {
+        if (process != null) {
+            processes.add(process);
+        }
     }
 
     /**
-     * Returns the program's current size.
-     * @return The program's current size.
+     * Runs the specified process.
+     * @param processID The process's ID.
+     * @param stack The Stack to enter into the process.
+     * @return Whether the process with the given processID was found.
      */
-    public static int getProgramSize() {
-        return program.size();
-    }
-
-    /**
-     * Adds a JumpDestination to the program.
-     * @param jumpDestination The JumpDestination.
-     */
-    public static void addJumpDestination(JumpDestination jumpDestination) {
-        jumpDestinations.add(jumpDestination);
-    }
-    /**
-     * Returns a jump destination for a given jump label.
-     * @param destination The destination label.
-     * @return The address of the given label.
-     */
-    public static int getDestinationAddress(String destination) {
-        for (JumpDestination jumpDestination: jumpDestinations) {
-            if (destination.equals(jumpDestination.label())) {
-                return jumpDestination.destination();
+    public static boolean runProcess (String processID, Stack stack) {
+        for (StackProcess process: processes) {
+            if (process.processID.equals(processID)) {
+                runProcess(process, stack);
+                return true;
             }
         }
-        System.err.println("Destination of label \"" + destination + "\" does not exist.");
-        System.exit(1);
-        return -1;
-    }
-    /**
-     * Sets the index of the next action to be executed.
-     * @param nextAction The next action's index.
-     */
-    public static void setNextAction(int nextAction) {
-        Program.nextAction = nextAction;
+        return false;
     }
 
-    /**
-     * Adds given actions to the program.
-     * @param actions The actions to add.
-     */
-    public static void addActions(Action... actions) {
-        if (actions == null) return;
-        for (Action action: actions) {
-            action.onCreate();
-            program.add(action);
-        }
-    }
-
-    /**
-     * Runs the Action at index currentAction.
-     */
-    public static void runCurrentAction() {
-        program.get(currentAction).run();
-        currentAction = nextAction;
-    }
-
-    /**
-     * Runs program.get(currentAction) until currentAction
-     * is out of bounds of program.
-     */
-    public static void runProgram() {
-        while (currentAction < program.size()) {
-            runCurrentAction();
-        }
+    private static void runProcess(StackProcess process, Stack stack) {
+        process.runProgram(stack);
     }
 }

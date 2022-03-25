@@ -1,8 +1,5 @@
 package com.apstamp45.stack_language.program.action;
 
-import com.apstamp45.stack_language.program.Program;
-import com.apstamp45.stack_language.program.action.Action;
-
 /**
  * An Action that does not jump to a different
  * place in the program.
@@ -10,15 +7,15 @@ import com.apstamp45.stack_language.program.action.Action;
 public abstract class NoJumpAction extends Action {
 
     /**
-     * Runs doAction(), then increments Program.nextAction.
+     * Runs doAction(), then increments StackProcess.nextAction.
      */
     public void run() {
         doAction();
-        Program.setNextAction(Program.getCurrentAction() + 1);
+        process.setNextAction(process.getCurrentAction() + 1);
     }
 
     /**
-     * Runs before incrementing Program.nextAction.
+     * Runs before incrementing StackProcess.nextAction.
      */
     public abstract void doAction();
 }
