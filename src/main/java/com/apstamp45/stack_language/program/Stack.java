@@ -1,4 +1,4 @@
-package com.apstamp45.stack_language;
+package com.apstamp45.stack_language.program;
 
 import java.util.LinkedList;
 import java.util.NoSuchElementException;
@@ -12,6 +12,17 @@ public class Stack {
      * Stores the memory stack.
      */
     private final LinkedList<Integer> stack = new LinkedList<>();
+
+    /**
+     * Creates a Stack with the given values.
+     * The first value will be bottom (left) of the stack.
+     * @param values The values to add to the stack.
+     */
+    public Stack(int... values) {
+        for (int value: values) {
+            stack.push(value);
+        }
+    }
 
     /**
      * Pops the first element of the list, and returns the

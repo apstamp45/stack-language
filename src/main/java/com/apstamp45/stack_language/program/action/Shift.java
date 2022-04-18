@@ -1,6 +1,6 @@
 package com.apstamp45.stack_language.program.action;
 
-import com.apstamp45.stack_language.Stack;
+import com.apstamp45.stack_language.program.Stack;
 
 /**
  * Shifts the stack by one if doubleAction == false,
@@ -36,15 +36,15 @@ public class Shift extends NoJumpAction {
     public void doAction() {
         if (direction) {
             if (doubleAction) {
-                Stack.shiftRightX();
+                process.getStack().shiftRightX();
             } else {
-                Stack.shiftRight();
+                process.getStack().shiftRight();
             }
         } else {
             if (doubleAction) {
-                Stack.shiftLeftX();
+                process.getStack().shiftLeftX();
             } else {
-                Stack.shiftLeft();
+                process.getStack().shiftLeft();
             }
         }
     }

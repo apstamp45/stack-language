@@ -1,7 +1,6 @@
 package com.apstamp45.stack_language.program.action;
 
-import com.apstamp45.stack_language.Stack;
-import com.apstamp45.stack_language.program.action.NoJumpAction;
+import com.apstamp45.stack_language.program.Stack;
 
 /**
  * Prints a character.
@@ -14,6 +13,6 @@ public class PrintChar extends NoJumpAction {
      */
     @Override
     public void doAction() {
-        Stack.printChar();
+        process.getStack().printChar();
     }
 }

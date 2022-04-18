@@ -1,7 +1,5 @@
 package com.apstamp45.stack_language.program;
 
-import com.apstamp45.stack_language.Stack;
-
 import java.util.ArrayList;
 
 /**

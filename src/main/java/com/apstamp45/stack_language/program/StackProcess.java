@@ -1,6 +1,5 @@
 package com.apstamp45.stack_language.program;
 
-import com.apstamp45.stack_language.Stack;
 import com.apstamp45.stack_language.program.action.Action;
 import com.apstamp45.stack_language.program.action.JumpDestination;
 

@@ -1,6 +1,5 @@
 package com.apstamp45.stack_language.program.action;
 
-import com.apstamp45.stack_language.Stack;
 import com.apstamp45.stack_language.program.StackProcess;
 
 /**
@@ -20,7 +19,7 @@ public abstract class Action {
      * @param process The StackProcess that this Aciton is in.
      */
     public void setProcess(StackProcess process) {
-        if (process == null) {
+        if (this.process == null) {
             this.process = process;
         }
     }

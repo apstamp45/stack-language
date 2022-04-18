@@ -1,6 +1,6 @@
 package com.apstamp45.stack_language.program.action.push;
 
-import com.apstamp45.stack_language.Stack;
+import com.apstamp45.stack_language.program.Stack;
 import com.apstamp45.stack_language.program.action.NoJumpAction;
 
 /**
@@ -27,6 +27,6 @@ public class Push extends NoJumpAction {
      */
     @Override
     public void doAction() {
-        Stack.push(value);
+        process.getStack().push(value);
     }
 }

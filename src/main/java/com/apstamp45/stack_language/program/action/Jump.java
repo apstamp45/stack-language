@@ -1,8 +1,5 @@
 package com.apstamp45.stack_language.program.action;
 
-import com.apstamp45.stack_language.Stack;
-import com.apstamp45.stack_language.program.StackProcess;
-
 /**
  * Jumps to a given destination in the program if
  * the condition is met.
@@ -52,9 +49,9 @@ public class Jump extends Action {
         boolean toJump = testCondition();
         if (condition < 0) toJump = !toJump;
         if (toJump) {
-            StackProcess.setNextAction(StackProcess.getDestinationAddress(destination));
+            process.setNextAction(process.getDestinationAddress(destination));
         } else {
-            StackProcess.setNextAction(StackProcess.getCurrentAction() + 1);
+            process.setNextAction(process.getCurrentAction() + 1);
         }
     }
 
@@ -63,8 +60,8 @@ public class Jump extends Action {
      * @return Whether the condition is met.
      */
     private boolean testCondition() {
-        int a = Stack.get(1);
-        int b = Stack.peek();
+        int a = process.getStack().get(1);
+        int b = process.getStack().peek();
         int condition = this.condition < 0 ? this.condition * -1 : this.condition;
         return switch (condition) {
             case 0 -> true;
@@ -73,7 +70,7 @@ public class Jump extends Action {
             case 3 -> a >= b;
             case 4 -> a < b;
             case 5 -> a <= b;
-            case 6 -> Stack.size() < 1;
+            case 6 -> process.getStack().size() < 1;
             default -> false;
         };
     }
