@@ -14,12 +14,14 @@ public class Program {
     private static final ArrayList<StackProcess> processes = new ArrayList<>();
 
     /**
-     * Adds a StackProcess to the list.
-     * @param process The StackProcess to add.
+     * Adds a StackProcess/es to the list.
+     * @param processes The StackProcess to add.
      */
-    public static void addStackProcess(StackProcess process) {
-        if (process != null) {
-            processes.add(process);
+    public static void addStackProcesses(StackProcess... processes) {
+        for (StackProcess process: processes) {
+            if (process != null) {
+                Program.processes.add(process);
+            }
         }
     }
 

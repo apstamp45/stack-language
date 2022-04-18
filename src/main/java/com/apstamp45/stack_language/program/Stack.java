@@ -25,6 +25,20 @@ public class Stack {
     }
 
     /**
+     * Returns a stack with the amount of values in
+     * the new stack being equal to the inputted value.
+     * @param values The amount of values to copy.
+     * @return The new Stack.
+     */
+    public Stack subStack(int values) {
+        Stack stack = new Stack();
+        while (--values >= 0) {
+            stack.push(get(values));
+        }
+        return stack;
+    }
+
+    /**
      * Pops the first element of the list, and returns the
      * value, or 0 if no element exists.
      * @return The pop value, or 0.
@@ -87,7 +101,7 @@ public class Stack {
     }
 
     /**
-     * Adds a value to the top of the stack.
+     * Adds given value to the top of the stack.
      * @param value The value to add.
      */
     public void push(int value) {
